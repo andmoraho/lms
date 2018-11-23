@@ -38,8 +38,9 @@
               </div>
               <div class="input-group form-group">
                 <span class="input-group-addon"><i class="fa fa-sitemap"></i></span>
-                <select class="form-control">
+                <select class="form-control" name="role" id="role">
                   <option value="admin" @if($user->getRole($user->id)->name === 'admin') selected @endif>{{__('Admin')}}</option>
+                  <option value="author" @if($user->getRole($user->id)->name === 'author') selected @endif>{{__('Author')}}</option>
                   <option value="user" @if($user->getRole($user->id)->name === 'user') selected @endif>{{__('User')}}</option>
                 </select>
               </div>

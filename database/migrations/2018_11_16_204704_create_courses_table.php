@@ -19,8 +19,6 @@ class CreateCoursesTable extends Migration
             $table->string('name',250)->nullable($value = true);
             $table->text('description')->nullable($value = true);
             $table->decimal('price', 8, 2)->unsigned()->nullable($value = true)->default('0.00');
-            $table->date('startdt');
-            $table->date('enddt');
             $table->timestamps();
         });
     }

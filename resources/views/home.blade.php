@@ -16,6 +16,8 @@
                     You are logged in  as 
                     @if(Auth::user()->hasRole('admin'))
                         <strong>Administrator</strong>
+                    @elseif(Auth::user()->hasRole('author'))
+                        <strong>Author</strong>
                     @else
                         <strong>User</strong>
                     @endif

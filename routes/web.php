@@ -13,10 +13,11 @@ Route::group([
    });
 
    Route::resource('users','Admin\User\UserController');
+   Route::resource('courses', 'Admin\Course\CourseController');
 
 });
 
-Route::resource('courses', 'CourseController');
+
 
 Auth::routes();
 

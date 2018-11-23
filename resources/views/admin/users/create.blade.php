@@ -45,8 +45,9 @@
               </div>
               <div class="input-group form-group">
                 <span class="input-group-addon"><i class="fa fa-sitemap"></i></span>
-                <select class="form-control">
+                <select class="form-control" name="role" id="role">
                   <option value="admin">{{__('Admin')}}</option>
+                  <option value="author">{{__('Author')}}</option>
                   <option value="user">{{__('User')}}</option>
                 </select>
               </div>

@@ -50,6 +50,8 @@ class LoginController extends Controller
         // User role
         if (\Auth::user()->hasRole('admin')) {
             return '/admin/dashboard';
+        } elseif(\Auth::user()->hasRole('author')) {
+            return '/home';
         } elseif(\Auth::user()->hasRole('user')) {
             return '/home';
         } else {

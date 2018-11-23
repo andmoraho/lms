@@ -69,7 +69,7 @@ class UserController extends Controller
             'image' => trim($file_route)
                         ]);
                         
-            $user->roles()->attach(Role::where('name', 'user')->first());
+            $user->roles()->attach(Role::where('name', $request->role)->first());
 
             return redirect()->action('Admin\User\UserController@index')->with('success','User created successfully.');
 
@@ -128,7 +128,7 @@ class UserController extends Controller
                 
                 if($request->hasFile('image')){
                                         
-                                        Storage::disk('users')->delete($prev_image);
+                    Storage::disk('users')->delete($prev_image);
 
                     $user_image = $request->image;
                     $file_route = time().'_'.$user_image->getClientOriginalName();
@@ -139,10 +139,18 @@ class UserController extends Controller
                     $user->image = trim($prev_image);
                     $hasfl = 'No File attached'; 
                 }
+								
+								$user->save();
 
-                $user->save();
-                $user_image = $request->image;
-                
+								$role_id = DB::table('roles')
+								->select('id')
+								->where('name', $request->role)
+								->first();											
+
+								DB::table('role_user')
+								->where('user_id', $user->id)
+								->update(['role_id' => $role_id->id]);								
+			
                 return redirect()->action('Admin\User\UserController@index')->with('success','User updated successfully.');
             }
         }

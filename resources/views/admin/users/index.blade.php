@@ -32,7 +32,14 @@
           <!-- Widget: user widget style 1 -->
           <div class="box box-widget widget-user-2">
             <!-- Add the bg color to the header using any of the bg-* classes -->
-            <div class="widget-user-header @if( $user->getRole($user->id)->name === 'admin' ) bg-aqua-active @else bg-yellow @endif">
+            <div class="widget-user-header 
+            @if( $user->getRole($user->id)->name === 'admin' ) 
+            bg-navy-active
+            @elseif( $user->getRole($user->id)->name === 'author' ) 
+            bg-gray
+            @else 
+            bg-light-blue 
+            @endif">
               <div class="widget-user-image">
                 <img class="img-circle" src="{{asset('storage/users/'.$user->image)}}" alt="{{ $user->name }} Avatar">
               </div>
@@ -42,7 +49,14 @@
               <h5 class="widget-user-desc">{{$user->email}}</h5>
 
             </div>
-            <div class="box-footer no-padding text-center @if( $user->getRole($user->id)->name === 'admin' ) bg-aqua-active @else bg-yellow @endif">
+            <div class="box-footer no-padding text-center 
+            @if( $user->getRole($user->id)->name === 'admin' ) 
+            bg-navy-active
+            @elseif( $user->getRole($user->id)->name === 'author' ) 
+            bg-gray
+            @else 
+            bg-light-blue 
+            @endif">
               <a class="btn btn-app" href="{{ route('users.edit',$user->id) }}">
                 <i class="fa fa-edit"></i> Edit
               </a>
